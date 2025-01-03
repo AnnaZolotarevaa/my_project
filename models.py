@@ -14,14 +14,16 @@ class TransportType(Base):
     fuel_consumption = Column(Float, nullable=False)  
     vehicle_count = Column(Integer, nullable=False)  
     routes = relationship("Route", back_populates="transport_type")
+    year_of_release = Column(Integer, nullable=True)
 
 class Route(Base):
     __tablename__ = 'routes'
     id = Column(Integer, primary_key=True, index=True)
     route_number = Column(String, nullable=False)
     daily_passenger_count = Column(Integer, nullable=False)
-    fare = Column(Float, nullable=False) 
-    vehicles_on_route = Column(Integer, nullable=False)  
+    fare = Column(Float, nullable=False)
+    vehicles_on_route = Column(Integer, nullable=False)
+    status = Column(String(50), nullable=False, default='active')  # например, 'active' или 'inactive'
     transport_type_id = Column(Integer, ForeignKey('transport_types.id'), nullable=False)
     transport_type = relationship("TransportType", back_populates="routes")
     path = relationship("Path", back_populates="route", uselist=False)
@@ -32,7 +34,7 @@ class Path(Base):
     start_point = Column(String, nullable=False)
     end_point = Column(String, nullable=False)
     stops_count = Column(Integer, nullable=False)  
-    distance = Column(Float, nullable=False)  
+    distance = Column(Float, nullable=False) 
     route_id = Column(Integer, ForeignKey('routes.id'), nullable=False)
     route = relationship("Route", back_populates="path")
     
