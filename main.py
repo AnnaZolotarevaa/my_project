@@ -123,13 +123,17 @@ def update_route(route_id: int, route: RouteCreate, db: Session = Depends(get_db
     db.refresh(route_db)
     return {"message": "Route updated successfully", "data": route_db}
 
-@app.delete("/routes/{route_id}")
+
+@app.delete("/routes/{route_id}/")
 def delete_route(route_id: int, db: Session = Depends(get_db)):
     route = db.query(Route).filter(Route.id == route_id).first()
+    
     if not route:
         raise HTTPException(status_code=404, detail="Route not found")
+
     db.delete(route)
     db.commit()
+    
     return {"message": "Route deleted successfully"}
 
 @app.post("/paths/")
