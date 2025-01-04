@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 ### 4 Создать базу данных
 
-Создайте базу данных PostgreSQL с именем `transport` и пользователем `postgres` с паролем `1234`.
+Создайте базу данных PostgreSQL с именем `transport_db` и пользователем `postgres` с паролем `1234`.
 
 ### 5 Запустить проект
 

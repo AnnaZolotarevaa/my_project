@@ -5,11 +5,11 @@ import random
 API_URL_TRANSPORT_TYPE = "http://127.0.0.1:8000/transport-types/"  
 API_URL_ROUTE = "http://127.0.0.1:8000/routes/"  
 API_URL_PATH = "http://127.0.0.1:8000/paths/"  
-NUM_RECORDS = 1000
+NUM_RECORDS = 10
 fake = Faker()
 
 TRANSPORT_TYPES = [
-    "Автобус", "Трамвай", "Троллейбус", "Метро", "Поезд", "Такси"]
+    "bus", "trolleybus", "metro", "tram", "taxi", "train"]
 
 def generate_random_transport_data():
     """Генерирует случайные данные для транспорта (TransportType)."""
@@ -17,8 +17,7 @@ def generate_random_transport_data():
         "name": random.choice(TRANSPORT_TYPES),  
         "average_speed": random.randint(20, 120),  
         "fuel_consumption": round(random.uniform(5.0, 20.0), 1),  
-        "vehicle_count": random.randint(10, 500),  
-        "year_of_release": random.randint(2000, 2024)  
+        "vehicle_count": random.randint(10, 500),   
     }
 
 def generate_random_route_data(transport_type_id):
@@ -28,7 +27,7 @@ def generate_random_route_data(transport_type_id):
         "daily_passenger_count": random.randint(50, 5000),  
         "fare": round(random.uniform(10, 50), 2),  
         "vehicles_on_route": random.randint(1, 50),  
-        "transport_type_id": transport_type_id  
+        "transport_type_id": transport_type_id,
     }
 
 def generate_random_path_data(route_id):

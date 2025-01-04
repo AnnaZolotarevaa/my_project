@@ -6,7 +6,7 @@ db_password = '1234'
 owner = 'postgres'
 db_host = 'localhost'
 db_port = '5432'  
-new_db_name = 'transport'  
+new_db_name = 'transport_db'  
 
 conn = psycopg2.connect(
     dbname='postgres',

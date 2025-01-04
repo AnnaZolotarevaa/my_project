@@ -6,7 +6,7 @@ from models import Base, TransportType, Route, Path
 from sqlalchemy import text
 from pydantic import BaseModel
 
-DATABASE_URL = "postgresql://postgres:1234@localhost:5432/transport"
+DATABASE_URL = "postgresql://postgres:1234@localhost:5432/transport_db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
